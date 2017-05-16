@@ -1,9 +1,6 @@
-require 'Octokit'
+require 'github_api'
 require 'dotenv/load'
 
-client = Octokit::Client.new(:access_token => ENV['ACCESS_TOKEN'])
+github = Github.new oauth_token: ENV['ACCESS_TOKEN']
 
-user = client.user
-user.login
-
-puts user.name
+puts github.repos.list.first
